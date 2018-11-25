@@ -9,15 +9,15 @@ script:
   - docker run nathandanielpeterson/fib-docker-test npm test -- --coverage
 
 after_success:
-  - docker build -t fib-client ./client
-  - docker build -t fib-server ./server
-  - docker build -t fib-nginx ./nginx
-  - docker build -t fib-worker ./worker
+  - docker build -t nathanpeterson/fib-client ./client
+  - docker build -t nathanpeterson/fib-server ./server
+  - docker build -t nathanpeterson/fib-nginx ./nginx
+  - docker build -t nathanpeterson/fib-worker ./worker
   # Log into dockerhub
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # push images to docker hub
-  - docker push fib-client
-  - docker push fib-server
-  - docker push fib-worker
-  - docker push fib-nginx
+  - docker push nathanpeterson/fib-client
+  - docker push nathanpeterson/fib-server
+  - docker push nathanpeterson/fib-worker
+  - docker push nathanpeterson/fib-nginx
   
